@@ -4,8 +4,13 @@ import './index.css';
 // import App from './App';
 import * as serviceWorker from './serviceWorker';
 import SignUp from './screen/signup/SignUp';
+import Form from '../node_modules/antd/lib/form/Form' 
+import loginForm from './screen/loginform/loginform';
 
-ReactDOM.render(<SignUp />, document.getElementById('root'));
+const mountNode = document.getElementById('root');
+const Wrappedlogin = Form.create()(loginForm);
+
+ReactDOM.render(<Wrappedlogin />, mountNode);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
