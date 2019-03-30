@@ -12,7 +12,8 @@ import {
 } from 'antd';
 import "../loginform/loginform.css";
 import logo from "../../assets/New_V3.png";
-import tachyons from 'tachyons';
+import 'tachyons';
+
 
 class loginForm extends React.Component {
     handleSubmit = (e) => {
@@ -42,8 +43,7 @@ class loginForm extends React.Component {
               }],
             })( <
               Input prefix = {
-                <
-                Icon type = "user"
+                <Icon type = "user"
                 style = {
                   {
                     color: 'rgba(0,0,0,.25)'
@@ -76,12 +76,13 @@ class loginForm extends React.Component {
                   valuePropName: 'checked',
                   initialValue: true,
                 })( 
-                  <Checkbox> Remember me </Checkbox>
+                  <Checkbox className={'white'}>Remember me</Checkbox>
                 )
               } 
-              <a className = "login-form-forgot"href = "" > Forgot password </a><br></br>
+              <a className = "login-form-forgot"href = "#forgotpassword" > Forgot password </a><br></br>
               <Button type = "primary" htmlType = "submit" className = "login-form-button">Log in</Button><br></br>
-              Or <a href = ""> register now! </a> 
+              <span className="para-Or">Or</span>
+              <a href = "#registernow" className="register-padding"> register now! </a> 
               </Form.Item> 
               </Form> 
               </div> 

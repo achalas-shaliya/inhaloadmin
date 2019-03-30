@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-// import App from './App';
 import * as serviceWorker from './serviceWorker';
-import SignUp from './screen/signup/SignUp';
 import Form from '../node_modules/antd/lib/form/Form' 
 import loginForm from './screen/loginform/loginform';
 
