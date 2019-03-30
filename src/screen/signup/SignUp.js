@@ -18,7 +18,7 @@ class SignUp extends Component {
                         <div className={"pa4-l"}>
                             <form className={"bg-light-red mw7 center pa4 br2-ns ba b--black-10 tc-l"}>
                                 <fieldset className={"cf bn ma0 pa0"}>
-                                    <legend className={"pa0 f5 f4-ns mb3 black-80"}>
+                                    <legend className={"pa0 f5 f4-ns mb3 white-80"}>
                                         Sign up for our newsletter
                                     </legend>
                                     <div className={"cf"}>
