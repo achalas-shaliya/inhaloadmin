@@ -10,22 +10,22 @@ import { HeaderComponent } from 'src/components';
 // import SimpleTable from './SimpleTable';
 import { styles } from './styles';
 
-class BlogCreateIndex extends React.Component<WithStyles<typeof styles>> {
-  public state = {
+class BlogIndex extends React.Component {
+  state = {
     open: true,
   };
 
-  public render() {
+  render() {
     const { classes } = this.props;
 
     return (
       <div className={classes.root}>
         <CssBaseline />
-        <HeaderComponent title='Blog Create' />
+        <HeaderComponent title='Blog' />
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
           <Typography gutterBottom={true} component="h2">
-            Blog Create
+            Blog
           </Typography>
         </main>
       </div>
@@ -33,4 +33,4 @@ class BlogCreateIndex extends React.Component<WithStyles<typeof styles>> {
   }
 }
 
-export const BlogCreatePage = withStyles(styles)(BlogCreateIndex);
+export const BlogPage = withStyles(styles)(BlogIndex);

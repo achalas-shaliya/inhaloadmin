@@ -10,27 +10,39 @@ import { HeaderComponent } from 'src/components';
 // import SimpleTable from './SimpleTable';
 import { styles } from './styles';
 
-class BlogIndex extends React.Component<WithStyles<typeof styles>> {
-  public state = {
+class DashboardIndex extends React.Component {
+  state = {
     open: true,
   };
 
-  public render() {
+  render() {
     const { classes } = this.props;
 
     return (
       <div className={classes.root}>
         <CssBaseline />
-        <HeaderComponent title='Blog' />
+        <HeaderComponent title='Dashboard' />
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
           <Typography gutterBottom={true} component="h2">
-            Blog
+            parana
+                    </Typography>
+          {/* <Typography variant="h4" gutterBottom={true} component="h2">
+            Orders
           </Typography>
+          <Typography component="div" className={classes.chartContainer}>
+            { <SimpleLineChart /> }
+          </Typography>
+          <Typography variant="h4" gutterBottom={true} component="h2">
+            Products
+          </Typography>
+          <div className={classes.tableContainer}>
+            { <SimpleTable /> }
+          </div> */}
         </main>
       </div>
     );
   }
 }
 
-export const BlogPage = withStyles(styles)(BlogIndex);
+export const DashboardPage = withStyles(styles)(DashboardIndex);

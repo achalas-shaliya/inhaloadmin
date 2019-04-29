@@ -9,7 +9,7 @@ import './App.css';
 import { BlogCreatePage, BlogPage, DashboardPage, LoginPage } from './pages';
 
 class App extends React.Component {
-    public render() {
+    render() {
         return (
             <BrowserRouter>
                 <Switch>
