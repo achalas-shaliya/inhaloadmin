@@ -21,6 +21,9 @@ export const styles = (theme: Theme) =>
             width: `calc(100% - ${drawerWidth}px)`,
         },
         appBarSpacer: theme.mixins.toolbar,
+        avatar:{
+            borderRadius:'0px'
+        },
         chartContainer: {
             marginLeft: -22,
         },

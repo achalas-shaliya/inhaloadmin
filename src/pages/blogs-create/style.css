@@ -152,12 +152,38 @@
     height: 3em !important;
 }
 
-#save-button {
-    margin: auto !important;
-    position: relative !important;
+#modal-button-save {
+    margin: 0 auto;
+    text-align: center;
+    display: block;
+    width: 40%;
+    border-radius: 10px;
+    border: none;
+    padding: 10px 20px;
+    color: aliceblue;
 }
 
-#close-button {
-    margin: auto !important;
-    position: relative !important;
+#browse-button {
+    background-color: #458af9 !important;
+    color: #fff !important;
+    margin: 4px 2px !important;
+    cursor: pointer !important;
+    padding: 7px 10px !important;
+    border-radius: 8px !important;
+}
+
+.ReactModal__Overlay {
+    opacity: 0 !important;
+    transition: opacity 200ms ease-in-out !important;
+    background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+.ReactModal__Overlay--after-open {
+    opacity: 1 !important;
+    background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+.ReactModal__Overlay--before-close {
+    opacity: 0 !important;
+    background-color: rgba(0, 0, 0, 0.3) !important;
 }

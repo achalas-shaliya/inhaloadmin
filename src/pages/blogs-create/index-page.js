@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
+import Modal from 'react-modal';
+import Editor from './cropper';
+import SweetAlert from './alerts'
+
+
+
 // import List from '@material-ui/core/List';
 
 import EmailEditor from '../../../node_modules/react-email-editor';
@@ -10,12 +16,13 @@ import Typography from '@material-ui/core/Typography';
 import { AnchorButton, Intent } from "@blueprintjs/core";
 
 import { HeaderComponent } from 'src/components';
-import Modal from './Modal'
+// import Modal from './Modal'
 // import { mainListItems, secondaryListItems } from './listItems';
 // import SimpleLineChart from './SimpleLineChart';
 // import SimpleTable from './SimpleTable';
 import { styles } from './styles';
 import styled from 'styled-components';
+import color from '@material-ui/core/colors/amber';
 const sample = require('../../assets/sample.json');
 
 const Container = styled.div`
@@ -50,39 +57,46 @@ const Bar = styled.div`
     cursor: pointer;
   }
   `
-const style = {
-  textfield: {
-    width: 10
-  },
-  textArea: {
-    height: 200,
-    fontSize: "3em"
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)'
   }
 };
+
+Modal.setAppElement('#root');
+
 
 class BlogCreateIndex extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
-    this.state = { isOpen: false };
+    // this.state = {};
+    // this.state = { isOpen: false };
+    this.state = {
+      modalIsOpen: false,
+      // show: false
+    };
+
+    this.openModal = this.openModal.bind(this);
+    this.afterOpenModal = this.afterOpenModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
-  onFileLoad(e) {
-    const file = e.currentTarget.files[0];
-    let filereader = new FileReader();
-    filereader.onload = () => {
-      console.log("Image Loaded : ", filereader.result);
-    }
+  openModal() {
+    this.setState({ modalIsOpen: true });
+  }
 
-    filereader.onabort = () => {
-      alert("Reading Aborted!");
-    }
+  afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    // this.subtitle.style.color = '#f00';
+  }
 
-    filereader.onerror = () => {
-      alert("Reading Error!");
-    }
-
-    filereader.readAsDataURL(file);
+  closeModal() {
+    this.setState({ modalIsOpen: false });
   }
 
   handleChange = (e) => event => {
@@ -91,17 +105,12 @@ class BlogCreateIndex extends React.Component {
     });
   };
 
-  state = {
-    open: true,
-  };
-
   render() {
     const { classes } = this.props;
 
     return (
 
       <div className={classes.root}>
-
         <CssBaseline />
         <HeaderComponent title='Create Blog' />
         <main className={classes.content}>
@@ -110,44 +119,25 @@ class BlogCreateIndex extends React.Component {
             <Bar>
               <h1></h1>
               <button onClick={this.exportHtml}>Export html</button>
-              <button onClick={this.saveDesign} onClick={this.toggleModal} >Save Design</button>
+              <button onClick={this.saveDesign} onClick={this.openModal}>Save Design</button>
             </Bar>
             <Container>
-              <Modal show={this.state.isOpen} onClose={this.toggleModal}>
+              <Modal
+                isOpen={this.state.modalIsOpen}
+                onAfterOpen={this.afterOpenModal}
+                onRequestClose={this.closeModal}
+                closeTimeoutMS={2000}
+                style={customStyles}
+                contentLabel="Example Modal"
+              >
                 <div
                   className="inner-container"
                   style={{
                     display: "flex",
                     flexDirection: "column"
-                  }}> <div className="sub-header">Drag an Image</div>
-                  <div className="draggable-container">
-                    <input
-                      type="file"
-                      id="file-browser-input"
-                      name="file-browser-input"
-                      ref={input => this.fileInput = input}
-                      onDragOver={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                      }}
-                      onDrop={this
-                        .onFileLoad
-                        .bind(this)}
-                      onChange={this
-                        .onFileLoad
-                        .bind(this)}
-                    />
-                    <div className="files-preview-container"></div>
-                    <div className="helper-text">Drag and Drop Images Here</div>
-                    <div className="file-browser-container">
-                      <AnchorButton
-                        text="Browse"
-                        intent={Intent.PRIMARY}
-                        minimal={true}
-                        onClick={() => this.fileInput.click()} />
-                    </div>
-                  </div>
-                  {/* <AnchorButton text="Upload" intent={Intent.SUCCESS} /> */}
+                  }}>
+                  <div className="sub-header">Drag an Image</div>
+                  <Editor />
                   <TextField
                     id="outlined-name"
                     label="Title"
@@ -168,8 +158,19 @@ class BlogCreateIndex extends React.Component {
                     margin="normal"
                     variant="outlined"
                   />
+                  <TextField
+                    id="outlined-name"
+                    label="keyword"
+                    className={classes.textField}
+                    value={this.state.name}
+                    onChange={this.handleChange('Title')}
+                    margin="normal"
+                    variant="outlined"
+                  />
                 </div>
-                <Button variant="contained" color="primary" id="save-button" className={classes.button}>Save</Button>
+                <div id="parent-div-button">
+                  <Button variant="contained" color="primary" id="modal-button-save" className="button-container">Submit</Button>
+                </div>
               </Modal>
               <EmailEditor
                 ref={editor => this.editor = editor}
@@ -184,7 +185,7 @@ class BlogCreateIndex extends React.Component {
 
   toggleModal = () => {
     this.setState({
-      isOpen: !this.state.isOpen
+      modelIsOpen: false
     });
   }
 
@@ -205,11 +206,11 @@ class BlogCreateIndex extends React.Component {
   onDesignLoad = (data) => {
     // console.log('onDesignLoad', data)
   }
-  toggleModal = () => {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
-  }
+  // toggleModal = () => {
+  //   this.setState({
+  //     isOpen: !this.state.isOpen
+  //   });
+  // }
 }
 
 
