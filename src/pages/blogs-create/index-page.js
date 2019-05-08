@@ -4,22 +4,12 @@ import TextField from '@material-ui/core/TextField';
 import Modal from 'react-modal';
 import Editor from './cropper';
 import SweetAlert from './alerts'
-
-
-
-// import List from '@material-ui/core/List';
-
 import EmailEditor from '../../../node_modules/react-email-editor';
 import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { AnchorButton, Intent } from "@blueprintjs/core";
-
 import { HeaderComponent } from 'src/components';
-// import Modal from './Modal'
-// import { mainListItems, secondaryListItems } from './listItems';
-// import SimpleLineChart from './SimpleLineChart';
-// import SimpleTable from './SimpleTable';
 import { styles } from './styles';
 import styled from 'styled-components';
 import color from '@material-ui/core/colors/amber';
@@ -74,25 +64,16 @@ Modal.setAppElement('#root');
 class BlogCreateIndex extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {};
-    // this.state = { isOpen: false };
     this.state = {
       modalIsOpen: false,
-      // show: false
     };
 
     this.openModal = this.openModal.bind(this);
-    this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
 
   openModal() {
     this.setState({ modalIsOpen: true });
-  }
-
-  afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    // this.subtitle.style.color = '#f00';
   }
 
   closeModal() {
@@ -119,12 +100,11 @@ class BlogCreateIndex extends React.Component {
             <Bar>
               <h1></h1>
               <button onClick={this.exportHtml}>Export html</button>
-              <button onClick={this.saveDesign} onClick={this.openModal}>Save Design</button>
+              <button onClick={this.openModal}>Save Design</button>
             </Bar>
             <Container>
               <Modal
                 isOpen={this.state.modalIsOpen}
-                onAfterOpen={this.afterOpenModal}
                 onRequestClose={this.closeModal}
                 closeTimeoutMS={2000}
                 style={customStyles}
@@ -201,16 +181,11 @@ class BlogCreateIndex extends React.Component {
     })
   }
   onLoad = () => {
-    // this.editor.loadDesign(sample)
+    this.editor.loadDesign(sample)
   }
   onDesignLoad = (data) => {
-    // console.log('onDesignLoad', data)
+    console.log('onDesignLoad', data)
   }
-  // toggleModal = () => {
-  //   this.setState({
-  //     isOpen: !this.state.isOpen
-  //   });
-  // }
 }
 
 
