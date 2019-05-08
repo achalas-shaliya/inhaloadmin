@@ -192,12 +192,12 @@ class BlogCreateIndex extends React.Component {
   exportHtml = () => {
     this.editor.exportHtml(data => {
       const { design, html } = data
-      // console.log('exporthtml', html)
+      console.log('exporthtml', html)
     })
   }
   saveDesign = () => {
     this.editor.saveDesign(design => {
-      console.log('saveDesign', design)
+      // console.log('saveDesign', design)
     })
   }
   onLoad = () => {
