@@ -17,7 +17,7 @@ export const styles = (theme: Theme) =>
             transition: theme.transitions.create(['width', 'margin'], {
                 duration: theme.transitions.duration.enteringScreen,
                 easing: theme.transitions.easing.sharp,
-            }),
+            }), 
             width: `calc(100% - ${drawerWidth}px)`,
         },
         appBarSpacer: theme.mixins.toolbar,
