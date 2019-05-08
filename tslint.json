@@ -22,5 +22,10 @@
         "object-literal-sort-keys": false,
         "no-console": false,
         "ordered-imports": false
+    },
+    "tsRules": {
+        "object-literal-sort-keys": false,
+        "no-console": false,
+        "ordered-imports": false
     }
 }

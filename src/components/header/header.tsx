@@ -1,26 +1,26 @@
 import AppBar from '@material-ui/core/AppBar';
+import Badge from '@material-ui/core/Badge';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import IconButton from '@material-ui/core/IconButton';
+import InputBase from '@material-ui/core/InputBase';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import AccountCircle from '@material-ui/icons/AccountCircle';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import SearchIcon from '@material-ui/icons/Search';
 import * as classNames from 'classnames';
 import * as React from 'react';
 import { Redirect } from 'react-router-dom';
 import { NavigationMenuComponent } from 'src/components';
 import { WrapperComponent } from '../wrapper/wrapper';
 import { styles } from './styles';
-import MenuItem from '@material-ui/core/MenuItem';
-import Badge from '@material-ui/core/Badge';
-import MailIcon from '@material-ui/icons/Mail';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import SearchIcon from '@material-ui/icons/Search';
-import InputBase from '@material-ui/core/InputBase';
-import Menu from '@material-ui/core/Menu';
 // import { List } from '@material-ui/core';
 
 class Header extends React.Component<any & WithStyles<typeof styles>, any> {
