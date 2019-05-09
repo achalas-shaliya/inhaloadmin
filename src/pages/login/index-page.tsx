@@ -92,8 +92,10 @@ class LoginPageIndex extends React.Component<ILoginPageProps & RouteComponentPro
 
     private handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        this.authenticationService.login(this.state).then((authenticated) => {
-            this.setState({ redirectToReferrer: true });
+        this.authenticationService.login(this.state).then((authenticated: any) => {
+            if (authenticated.redirectToReferrer) {
+                this.setState({ redirectToReferrer: true });
+            }    
         })
     }
 

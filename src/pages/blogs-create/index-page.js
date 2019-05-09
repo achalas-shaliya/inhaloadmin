@@ -1,18 +1,17 @@
-import React, { Component } from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import Modal from 'react-modal';
-import Editor from './cropper';
-import SweetAlert from './alerts'
-import EmailEditor from '../../../node_modules/react-email-editor';
-import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles';
 import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import withStyles from '@material-ui/core/styles/withStyles';
+import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
-import { AnchorButton, Intent } from "@blueprintjs/core";
+import React from 'react';
+import Modal from 'react-modal';
 import { HeaderComponent } from 'src/components';
-import { styles } from './styles';
 import styled from 'styled-components';
-import color from '@material-ui/core/colors/amber';
+import EmailEditor from '../../../node_modules/react-email-editor';
+import Editor from './cropper';
+import { styles } from './styles';
+const HTMLDecoderEncoder = require("html-encoder-decoder");
+const generator = require('generate-password');
 const sample = require('../../assets/sample.json');
 
 const Container = styled.div`
@@ -100,7 +99,7 @@ class BlogCreateIndex extends React.Component {
             <Bar>
               <h1></h1>
               <button onClick={this.exportHtml}>Export html</button>
-              <button onClick={this.openModal}>Save Design</button>
+              <button onClick={this.saveDesign}>Save Design</button>
             </Bar>
             <Container>
               <Modal
@@ -143,13 +142,15 @@ class BlogCreateIndex extends React.Component {
                     label="keyword"
                     className={classes.textField}
                     value={this.state.name}
-                    onChange={this.handleChange('Title')}
+                    onChange={this.handleChange('Keyword')}
                     margin="normal"
                     variant="outlined"
                   />
                 </div>
                 <div id="parent-div-button">
-                  <Button variant="contained" color="primary" id="modal-button-save" className="button-container">Submit</Button>
+                  <Button variant="contained" color="primary" id="modal-button-save" className="button-container" onClick={this.submitButtonHandler}>
+                    Submit
+                  </Button>
                 </div>
               </Modal>
               <EmailEditor
@@ -169,15 +170,26 @@ class BlogCreateIndex extends React.Component {
     });
   }
 
+  submitButtonHandler = () => {
+    console.log(this.state);
+  }
+
   exportHtml = () => {
     this.editor.exportHtml(data => {
       const { design, html } = data
-      console.log('exporthtml', html)
+      var details = JSON.parse(localStorage.getItem('auth'));
+      const HTML = HTMLDecoderEncoder.encode(html);
+      var password = generator.generate({
+        length: 10,
+        numbers: true
+      });
+      console.log(password);
     })
   }
   saveDesign = () => {
     this.editor.saveDesign(design => {
-      // console.log('saveDesign', design)
+      // var details = JSON.parse(localStorage.getItem('auth'));
+      this.openModal();
     })
   }
   onLoad = () => {
