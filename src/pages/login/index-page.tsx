@@ -12,7 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import * as React from 'react';
 import { Redirect, RouteComponentProps, withRouter } from 'react-router-dom';
-import { AuthenticationService } from 'src/services';
+import { AuthenticationService } from '../../services';
 import { withRoot } from '../../withRoot';
 import { styles } from './styles';
 

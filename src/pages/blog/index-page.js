@@ -2,9 +2,8 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles';
 import Typography from '@material-ui/core/Typography';
 import * as React from 'react';
-import { HeaderComponent } from 'src/components';
 import { styles } from './styles';
-import { BlogLoaderComponent } from '../../components';
+import { BlogLoaderComponent, HeaderComponent } from '../../components/index';
 
 class BlogIndex extends React.Component {
   state = {
