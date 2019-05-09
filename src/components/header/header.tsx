@@ -18,9 +18,9 @@ import SearchIcon from '@material-ui/icons/Search';
 import * as classNames from 'classnames';
 import * as React from 'react';
 import { Redirect } from 'react-router-dom';
-import { NavigationMenuComponent } from 'src/components';
 import { WrapperComponent } from '../wrapper/wrapper';
 import { styles } from './styles';
+import { NavigationMenuComponent } from '../index';
 // import { List } from '@material-ui/core';
 
 class Header extends React.Component<any & WithStyles<typeof styles>, any> {
