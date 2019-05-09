@@ -13,7 +13,7 @@ class Editor extends React.Component {
                 width={300}
                 height={200}
                 border={50}
-                borderRadius={12}
+                borderRadius={70}
                 scale={1.2}
             />
         );

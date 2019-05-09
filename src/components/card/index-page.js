@@ -30,7 +30,7 @@ class ReviewCard extends React.Component {
     const { classes } = this.props;
 
     return (
-      <CardActionArea onClick={this.testMethod}>
+      <CardActionArea className={classes.card} onClick={this.testMethod}>
         <Card className={classes.card}>
           <CardHeader
             avatar={
