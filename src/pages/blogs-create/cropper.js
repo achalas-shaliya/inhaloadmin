@@ -4,87 +4,54 @@ import '../../pages/blogs-create/style.css';
 class Editor extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { hightlight: false };
-        this.fileInputRef = React.createRef();
-
-        this.openFileDialog = this.openFileDialog.bind(this);
-        this.onFilesAdded = this.onFilesAdded.bind(this);
-        this.onDragOver = this.onDragOver.bind(this);
-        this.onDragLeave = this.onDragLeave.bind(this);
-        this.onDrop = this.onDrop.bind(this);
+        this.state = { file: '', imagePreviewUrl: '' }
     }
 
-    openFileDialog() {
-        if (this.props.disabled) { return };
-        this.fileInputRef.current.click();
-    }
+    _handleImageChange(e) {
+        e.preventDefault();
 
-    onFilesAdded(evt) {
-        if (this.props.disabled) { return };
-        const files = evt.target.files;
-        if (this.props.onFilesAdded) {
-            const array = this.fileListToArray(files);
-            this.props.onFilesAdded(array);
+        let reader = new FileReader();
+        let file = e.target.files[0];
+
+        reader.onloadend = () => {
+            this.setState({
+                file: file,
+                imagePreviewUrl: reader.result
+            });
+        }
+
+        reader.readAsDataURL(file)
+
+        if (file !== null) {
+            e.preventDefault();
+            // TODO: do something with -> this.state.file
+            console.log('handle uploading-', this.state.file);
         }
     }
-
-    onDragOver(evt) {
-        evt.preventDefault();
-
-        if (this.props.disabled) { return };
-
-        this.setState({ hightlight: true });
-    }
-
-    onDragLeave() {
-        this.setState({ hightlight: false });
-    }
-
-    onDrop(event) {
-        event.preventDefault();
-
-        if (this.props.disabled) { return };
-
-        const files = event.dataTransfer.files;
-        if (this.props.onFilesAdded) {
-            const array = this.fileListToArray(files);
-            this.props.onFilesAdded(array);
-        }
-        this.setState({ hightlight: false });
-    }
-
-    fileListToArray(list) {
-        const array = [];
-        for (var i = 0; i < list.length; i++) {
-            array.push(list.item(i));
-        }
-        return array;
-    }
-
-
     render() {
+        let { imagePreviewUrl } = this.state;
+        let $imagePreview = null;
+        if (imagePreviewUrl) {
+            // eslint-disable-next-line jsx-a11y/alt-text
+            $imagePreview = (<img src={imagePreviewUrl} />);
+        } else {
+            $imagePreview = (<div className="previewText">select an image to upload</div>);
+        }
+
         return (
-            <div
-                className={`Dropzone ${this.state.hightlight ? "Highlight" : ""}`}
-                onDragOver={this.onDragOver}
-                onDragLeave={this.onDragLeave}
-                onDrop={this.onDrop}
-                onClick={this.openFileDialog}
-                style={{ cursor: this.props.disabled ? "default" : "pointer" }}
-            >
-                <input
-                    ref={this.fileInputRef}
-                    className="FileInput"
-                    type="file"
-                    multiple
-                    onChange={this.onFilesAdded}
-                />
-                <img
-                    alt="upload"
-                    className="Icon"
-                    src={require('../../assets/baseline-cloud_upload-24px.svg')}
-                />
-                <span>Upload Files</span>
+            <div className="previewComponent">
+                <form onSubmit={(e) => this._handleSubmit(e)}>
+                    <label className="fileContainer">
+                        <input
+                            className="custom-file-input"
+                            type="file"
+                            onChange={(e) => this._handleImageChange(e)}
+                        />
+                    </label>
+                </form>
+                <div className="imgPreview">
+                    {$imagePreview}
+                </div>
             </div>
         );
     }

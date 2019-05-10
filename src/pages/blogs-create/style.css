@@ -188,39 +188,43 @@
     background-color: rgba(0, 0, 0, 0.3) !important;
 }
 
-.Dropzone {
+
+.fileContainer [type=file] {
+    cursor: inherit;
+    display: block;
+    font-size: 0px;
+    filter: alpha(opacity=0);
+    min-height: 200px;
+    min-width: 350px;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 0px;
+}
+
+.imgPreview {
+    text-align: center;
     height: 200px;
-    width: 300px;
-    background-color: #fff;
-    border: 2px dashed rgb(187, 186, 186);
-    border-radius: 0%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    font-size: 16px;
+    width: 350px;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    padding-bottom: 10px;
 }
 
-.Icon {
-    opacity: 0.3;
-    height: 64px;
-    width: 64px;
+img {
+    width: 100%;
+    height: 100%;
 }
 
-.FileInput {
-    display: none;
+.previewText {
+    width: 100%;
+    margin-top: 20px;
 }
 
-.Card {
-    background-color: white;
-    padding: 64px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
-    box-sizing: border-box;
-}
-
-.Highlight {
-    background-color: rgb(188, 185, 236);
+.centerText {
+    text-align: center;
+    width: 500px;
 }
