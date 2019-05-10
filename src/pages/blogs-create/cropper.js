@@ -7,12 +7,6 @@ class Editor extends React.Component {
         this.state = { file: '', imagePreviewUrl: '' }
     }
 
-    _handleSubmit(e) {
-        e.preventDefault();
-        // TODO: do something with -> this.state.file
-        console.log('handle uploading-', this.state.file);
-    }
-
     _handleImageChange(e) {
         e.preventDefault();
 
@@ -27,6 +21,12 @@ class Editor extends React.Component {
         }
 
         reader.readAsDataURL(file)
+
+        if (file !== null) {
+            e.preventDefault();
+            // TODO: do something with -> this.state.file
+            console.log('handle uploading-', this.state.file);
+        }
     }
     render() {
         let { imagePreviewUrl } = this.state;
@@ -35,22 +35,21 @@ class Editor extends React.Component {
             // eslint-disable-next-line jsx-a11y/alt-text
             $imagePreview = (<img src={imagePreviewUrl} />);
         } else {
-            $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
+            $imagePreview = (<div className="previewText">select an image to upload</div>);
         }
 
         return (
             <div className="previewComponent">
                 <form onSubmit={(e) => this._handleSubmit(e)}>
-                    {/* <button className="submitButton"
-                        type="submit"
-                        onClick={(e) => this._handleSubmit(e)}>Upload Image</button> */}
+                    <label className="fileContainer">
+                        <input
+                            className="custom-file-input"
+                            type="file"
+                            onChange={(e) => this._handleImageChange(e)}
+                        />
+                    </label>
                 </form>
                 <div className="imgPreview">
-                    <input className="fileInput"
-                        type="file"
-                        onChange={(e) => this._handleImageChange(e)}
-                        // onChange={(e) =>this._handleSubmit(e)} 
-                        />
                     {$imagePreview}
                 </div>
             </div>
