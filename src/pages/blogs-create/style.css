@@ -190,10 +190,10 @@
 
 .Dropzone {
     height: 200px;
-    width: 200px;
+    width: 300px;
     background-color: #fff;
     border: 2px dashed rgb(187, 186, 186);
-    border-radius: 50%;
+    border-radius: 0%;
     display: flex;
     align-items: center;
     justify-content: center;

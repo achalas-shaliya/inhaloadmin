@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import AvatarEditor from '../../../node_modules/react-avatar-edit';
 import '../../pages/blogs-create/style.css';
-
-// const uploadImg = "../src/assets/baseline-cloud_upload-24px.svg";
-
 class Editor extends React.Component {
     constructor(props) {
         super(props);
@@ -24,12 +21,10 @@ class Editor extends React.Component {
 
     onFilesAdded(evt) {
         if (this.props.disabled) { return };
-        // eslint-disable-next-line
         const files = evt.target.files;
         if (this.props.onFilesAdded) {
             const array = this.fileListToArray(files);
             this.props.onFilesAdded(array);
-            // console.log(files)
         }
     }
 
@@ -87,7 +82,7 @@ class Editor extends React.Component {
                 <img
                     alt="upload"
                     className="Icon"
-                    src="baseline-cloud_upload-24px.svg"
+                    src={require('../../assets/baseline-cloud_upload-24px.svg')}
                 />
                 <span>Upload Files</span>
             </div>

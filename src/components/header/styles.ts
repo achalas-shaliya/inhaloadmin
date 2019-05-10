@@ -1,4 +1,4 @@
-import {Theme} from '@material-ui/core/styles/createMuiTheme';
+import { Theme } from '@material-ui/core/styles/createMuiTheme';
 import createStyles from '@material-ui/core/styles/createStyles';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 
@@ -86,8 +86,11 @@ export const styles = (theme: Theme) =>
             paddingLeft: theme.spacing.unit * 10,
             transition: theme.transitions.create('width'),
             width: '100%',
-            [theme.breakpoints.up('md')]: {
-                width: 200,
+            [theme.breakpoints.up('sm')]: {
+                width: 120,
+                '&:focus': {
+                    width: 200,
+                },
             },
         },
         sectionDesktop: {
