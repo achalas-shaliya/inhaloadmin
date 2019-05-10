@@ -188,39 +188,68 @@
     background-color: rgba(0, 0, 0, 0.3) !important;
 }
 
-.Dropzone {
+.imgPreview {
+    text-align: center;
+    margin: 5px 15px;
     height: 200px;
-    width: 300px;
-    background-color: #fff;
-    border: 2px dashed rgb(187, 186, 186);
-    border-radius: 0%;
-    display: flex;
-    align-items: center;
+    width: 500px;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    border-top: 5px solid gray;
+    border-bottom: 5px solid gray;
+}
+
+h3 {
+    margin-left: 15px
+}
+
+.fileInput {
+    /* border-bottom: 4px solid lightgray;
+    border-right: 4px solid lightgray;
+    border-top: 1px solid black;
+    border-left: 1px solid black; */
+    /* padding: 10px; */
+    /* margin: 15px; */
+    cursor: pointer;
     justify-content: center;
-    flex-direction: column;
-    font-size: 16px;
+    padding-left: 10px;
 }
 
-.Icon {
-    opacity: 0.3;
-    height: 64px;
-    width: 64px;
+.imgPreview {
+    text-align: center;
+    margin: 5px 15px;
+    height: 200px;
+    width: 350px;
+     /* border-left: 1px solid gray; */
+    /* border-right: 1px solid gray; */
+    /* border-top: 5px solid gray; */
+    border-bottom: 5px solid gray;
+    padding-bottom: 10px;
 }
 
-.FileInput {
-    display: none;
+img {
+    width: 100%;
+    height: 100%;
 }
 
-.Card {
-    background-color: white;
-    padding: 64px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
-    box-sizing: border-box;
+.previewText {
+    width: 100%;
+    margin-top: 20px;
 }
 
-.Highlight {
-    background-color: rgb(188, 185, 236);
+.submitButton {
+    /* padding: 12px;
+    margin-left: 10px;
+    background: white;
+    border: 4px solid lightgray;
+    border-radius: 15px;
+    font-weight: 700;
+    font-size: 10pt;
+    cursor: pointer;
+    hover:background: #efefef; */
+}
+
+.centerText {
+    text-align: center;
+    width: 500px;
 }
