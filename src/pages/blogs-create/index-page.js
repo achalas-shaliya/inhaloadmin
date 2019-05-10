@@ -116,8 +116,7 @@ class BlogCreateIndex extends React.Component {
                     display: "flex",
                     flexDirection: "column"
                   }}>
-                  <div className="sub-header">Drag an Image</div>
-                  <Editor />
+                  <Editor onFilesAdded={console.log}/>
                   <TextField
                     id="outlined-name"
                     label="Title"
