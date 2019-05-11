@@ -1,4 +1,4 @@
-import {Theme} from '@material-ui/core/styles/createMuiTheme';
+import { Theme } from '@material-ui/core/styles/createMuiTheme';
 import createStyles from '@material-ui/core/styles/createStyles';
 
 const drawerWidth = 240;
@@ -17,12 +17,12 @@ export const styles = (theme: Theme) =>
             transition: theme.transitions.create(['width', 'margin'], {
                 duration: theme.transitions.duration.enteringScreen,
                 easing: theme.transitions.easing.sharp,
-            }), 
+            }),
             width: `calc(100% - ${drawerWidth}px)`,
         },
         appBarSpacer: theme.mixins.toolbar,
-        avatar:{
-            borderRadius:'0px'
+        avatar: {
+            borderRadius: '0px'
         },
         chartContainer: {
             marginLeft: -22,
@@ -82,4 +82,18 @@ export const styles = (theme: Theme) =>
             padding: '0 8px',
             ...theme.mixins.toolbar,
         },
+        leftIcon: {
+            marginRight: theme.spacing.unit,
+        },
+        rightIcon: {
+            marginLeft: theme.spacing.unit,
+        },
+        iconSmall: {
+            fontSize: 20,
+        },
+        buttons: {
+            margin: theme.spacing.unit,
+            flex:1,
+            maxwidth: '15px'
+        }
     });
