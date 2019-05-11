@@ -4,6 +4,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
+import classNames from 'classnames';
 import Modal from 'react-modal';
 import styled from 'styled-components';
 import EmailEditor from '../../../node_modules/react-email-editor';
@@ -11,6 +12,8 @@ import Editor from './cropper';
 import { styles } from './styles';
 import { Input } from '@material-ui/core/Input';
 import { HeaderComponent } from '../../components';
+import SaveIcon from '@material-ui/icons/Save';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 const HTMLDecoderEncoder = require("html-encoder-decoder");
 const generator = require('generate-password');
 const sample = require('../../assets/sample.json');
@@ -24,11 +27,10 @@ const Container = styled.div`
 
 const Bar = styled.div`
   flex: 1;
-  background-color: #4169E1;
+  background-color: #cfd8dc;
   color: #FFF;
-  padding: 10px;
   display: flex;
-  max-height: 40px;
+  max-height: 100px;
   h1 {
     flex: 1;
     font-size: 16px;
@@ -36,14 +38,11 @@ const Bar = styled.div`
   }
   button {
     flex: 1;
-    padding: 0px;
     margin-left: 10px;
     font-size: 14px;
     font-weight: bold;
-    background-color: #000;
-    color: #FFF;
     border: 0px;
-    max-width: 150px;
+    max-width: 250px;
     cursor: pointer;
   }
   `
@@ -98,9 +97,15 @@ class BlogCreateIndex extends React.Component {
           <div className={classes.appBarSpacer} />
           <Typography gutterBottom={true} component="h2">
             <Bar>
-              <h1></h1>
-              <button onClick={this.exportHtml}>Export html</button>
-              <button onClick={this.saveDesign}>Save Design</button>
+              <h1> </h1>
+              <Button variant="contained" size="medium" color="primary" className={classes.buttons} onClick={this.saveDesign}>
+                <SaveIcon className={classNames(classes.leftIcon, classes.iconSmall)} />
+                Save Design
+              </Button>
+              <Button variant="contained" size="medium" color="primary" className={classes.buttons} onClick={this.exportHtml}>
+                Publish Blog
+                 <CloudUploadIcon className={classes.rightIcon} />
+              </Button>
             </Bar>
             <Container>
               <Modal
@@ -116,7 +121,7 @@ class BlogCreateIndex extends React.Component {
                     display: "flex",
                     flexDirection: "column"
                   }}>
-                  <Editor onFilesAdded={console.log}/>
+                  <Editor />
                   <TextField
                     id="outlined-name"
                     label="Title"
