@@ -26,7 +26,7 @@ class ReviewCard extends React.Component {
     this.setState(state => ({ expanded: !state.expanded }));
   };
 
-  render() {
+  render(props) {
     const { classes } = this.props;
 
     return (
@@ -38,12 +38,12 @@ class ReviewCard extends React.Component {
                 R
             </Avatar>
             }
-            title="Shrimp and Chorizo Paella"
+            title={this.props.CardDatas.topic}
             subheader="September 14, 2016"
           />
           <CardMedia
             className={classes.media}
-            image="/static/images/cards/paella.jpg"
+            image={this.props.CardDatas.image_url}
             title="Paella dish"
           />
           <CardContent>

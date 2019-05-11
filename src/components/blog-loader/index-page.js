@@ -11,24 +11,21 @@ class BlogLoader extends React.Component {
     open: true,
   };
 
-  render() {
+  render(props) {
     const { classes } = this.props;
 
     return (
       <div className={classes.root} mt={1}>
         <Grid container spacing={24} >
-          <Grid item xs={3}>
-            <ReviewCardComponent />
-          </Grid>
-          <Grid item xs={3}>
-            <ReviewCardComponent />
-          </Grid>
-          <Grid item xs={3}>
-            <ReviewCardComponent />
-          </Grid>
-          <Grid item xs={3}>
-            <ReviewCardComponent />
-          </Grid>
+          {
+            this.props.jsonData.map((Data, indexx) => {
+              return (
+                <Grid item xs={3}>
+                  <ReviewCardComponent key={indexx} CardDatas={Data} />
+                </Grid>
+              );
+            })
+          }
         </Grid>
       </div>
     );

@@ -1,18 +1,20 @@
 import CssBaseline from '@material-ui/core/CssBaseline';
-import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles';
+import withStyles from '@material-ui/core/styles/withStyles';
 import Typography from '@material-ui/core/Typography';
 import * as React from 'react';
-import { styles } from './styles';
 import { BlogLoaderComponent, HeaderComponent } from '../../components/index';
+import { styles } from './styles';
+import { keys } from '@material-ui/core/styles/createBreakpoints';
+const SimpleData = require('../../assets/simpleData');
 
 class BlogIndex extends React.Component {
   state = {
     open: true,
   };
 
+
   render() {
     const { classes } = this.props;
-
     return (
       <div className={classes.root}>
         <CssBaseline />
@@ -20,10 +22,13 @@ class BlogIndex extends React.Component {
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
           <Typography gutterBottom={true} component="h2">
-            <BlogLoaderComponent />
-            <BlogLoaderComponent />
-            <BlogLoaderComponent />
-            <BlogLoaderComponent />
+            {
+              SimpleData.map((Data, index) => {
+                return (
+                  <BlogLoaderComponent key={index} jsonData={Data} />
+                );
+              })
+            }
           </Typography>
         </main>
       </div>
