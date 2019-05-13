@@ -19,6 +19,7 @@ class NavigationMenu extends React.Component<WithStyles<typeof styles>> {
         { path: '/', title: 'Dashboard', icon: () => <DashboardIcon />, group: 'D' },
         { path: '/blogs/', title: 'Blogs', icon: () => <FolderOpenIcon />, group: 'Blog' },
         { path: '/blogcreate/', title: 'Blog Create', icon: () => <CloudUploadIcon />, group: 'Blog' },
+        { path: '/patient/', title: 'Patients', icon: () => <CloudUploadIcon />, },
     ]
 
     public render() {

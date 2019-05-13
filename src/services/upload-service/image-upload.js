@@ -1,18 +1,15 @@
 import S3 from 'aws-sdk/clients/s3';
 // @ts-ignore
-// import * as key from 'key.json';
+const key = require('../config/bucket');
 
+var aid = key.AWSAccessKeyId;
+var skey = key.AWSSecretKey;
+var regn = key.region;
 export class ImageserviceService {
 
 
-  constructor() {
-    var aid = accessKeyId;
-    var skey = secretAccessKey;
-    var regn = region;
-  }
-
-  //function of upload image to the server
-  uploadfile(file, fname) {
+  //function of uplozzad image to the server
+  uploadfile = (file, fname) => {
     const bucket = new S3(
       {
         accessKeyId: this.aid,
