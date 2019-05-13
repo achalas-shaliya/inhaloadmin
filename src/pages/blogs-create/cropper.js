@@ -70,7 +70,6 @@ class Editor extends React.Component {
             length: 10,
             numbers: true
         });
-        console.log(aid+" {} "+skey+" {} "+regn);
         this.uploadfile(file, name+file.name);
     }
 
@@ -97,7 +96,6 @@ class Editor extends React.Component {
             }
 
             alert('Successfully uploaded file.');
-            console.log('Successfully uploaded file.');
             console.log(data)
             return true;
         });
