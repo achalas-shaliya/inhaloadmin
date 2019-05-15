@@ -6,7 +6,7 @@ import { styles } from './styles';
 
 
 
-class BlogLoader extends React.Component {
+class PatientLoader extends React.Component {
   state = {
     open: true,
   };
@@ -32,4 +32,4 @@ class BlogLoader extends React.Component {
   }
 }
 
-export const BlogLoaderComponent = withStyles(styles)(BlogLoader);
+export const PatientLoaderComponent = withStyles(styles)(PatientLoader);
