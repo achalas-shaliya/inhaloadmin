@@ -68,7 +68,7 @@ class Editor extends React.Component {
                             className="custom-file-input"
                             type="file"
                             onChange={(e) => this._handleImageChange(e)}
-                            // onClick={this.changeVisibility}
+                        // onClick={this.changeVisibility}
                         />
                     </label>
                 </form>
@@ -111,7 +111,7 @@ class Editor extends React.Component {
                 alert('There was an error uploading your file: ' + err);
                 return false;
             }
-            
+
             alert('Successfully uploaded file.');
             console.log('Successfully uploaded file.');
             // eslint-disable-next-line jsx-a11y/alt-text
