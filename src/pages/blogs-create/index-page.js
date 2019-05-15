@@ -18,6 +18,7 @@ const HTMLDecoderEncoder = require("html-encoder-decoder");
 const generator = require('generate-password');
 const sample = require('../../assets/sample.json');
 
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -65,11 +66,20 @@ class BlogCreateIndex extends React.Component {
     super(props);
     this.state = {
       modalIsOpen: false,
+      file: ''
     };
 
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    // this.recieveData = this.recieveData.bind(this);
+
   }
+  // recieveData = (file )=> {
+  //   console.log('image file :'+file);
+  //   const imageName = file[0].name
+  //   console.log(imageName)
+  //   this.setState({ file })
+  // }
 
   openModal() {
     this.setState({ modalIsOpen: true });
@@ -121,7 +131,10 @@ class BlogCreateIndex extends React.Component {
                     display: "flex",
                     flexDirection: "column"
                   }}>
-                  <Editor />
+                  <React.Fragment>
+                    <Editor  />
+                  </React.Fragment>
+
                   <TextField
                     id="outlined-name"
                     label="Title"
@@ -193,6 +206,7 @@ class BlogCreateIndex extends React.Component {
   }
   saveDesign = () => {
     this.editor.saveDesign(design => {
+      localStorage.getItem('imageName')
       // var details = JSON.parse(localStorage.getItem('auth'));
       this.openModal();
     })
@@ -202,6 +216,7 @@ class BlogCreateIndex extends React.Component {
   }
   onDesignLoad = (data) => {
     console.log('onDesignLoad', data)
+
   }
 }
 

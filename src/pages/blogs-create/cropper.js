@@ -1,19 +1,27 @@
 import S3 from 'aws-sdk/clients/s3';
 import React from 'react';
 import '../../pages/blogs-create/style.css';
-const key = require ('../../config/bucket');
+import CircularIntegration from '../blogs-create/circular-progressBar';
+// import circularProgressBar from '../blogs-create/circular-progressBar';
+import SuccessAlert from '../blogs-create/alerts'
+const key = require('../../config/bucket');
 
 var aid = key.AWSAccessKeyId;
 var skey = key.AWSSecretKey;
 var regn = key.region;
 
 const generator = require('generate-password');
+const img = <img src={require('../../assets/blog.png')} />
+
 class Editor extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { file: '', imagePreviewUrl: '' }
+        this.state = {
+            file: img,
+            imagePreviewUrl: '',
+            isVisible: false,
+        }
     }
-
     _handleImageChange(e) {
         e.preventDefault();
 
@@ -26,16 +34,22 @@ class Editor extends React.Component {
                 imagePreviewUrl: reader.result
             });
             console.log('handle uploading: ', this.state.file);
+            // this.props.recieveData(this.state.file);
             this.cahngename(this.state.file);
         }
-
-        reader.readAsDataURL(file)
+        reader.readAsDataURL(file);
 
         if (file !== null) {
             e.preventDefault();
             // TODO: do something with -> this.state.file
         }
     }
+    // changeVisibility() {
+    //     this.setState({
+    //         isVisible: true
+    //     })
+    // }
+
     render() {
         let { imagePreviewUrl } = this.state;
         let $imagePreview = null;
@@ -43,7 +57,7 @@ class Editor extends React.Component {
             // eslint-disable-next-line jsx-a11y/alt-text
             $imagePreview = (<img src={imagePreviewUrl} />);
         } else {
-            $imagePreview = (<div className="previewText">select an image to upload</div>);
+            $imagePreview = (<div className="previewText">{this.state.file}</div>);
         }
 
         return (
@@ -54,10 +68,12 @@ class Editor extends React.Component {
                             className="custom-file-input"
                             type="file"
                             onChange={(e) => this._handleImageChange(e)}
+                        // onClick={this.changeVisibility}
                         />
                     </label>
                 </form>
                 <div className="imgPreview">
+                    {/* <CircularIntegration onClick={this.changeVisibility} /> */}
                     {$imagePreview}
                 </div>
             </div>
@@ -70,7 +86,8 @@ class Editor extends React.Component {
             length: 10,
             numbers: true
         });
-        this.uploadfile(file, name+file.name);
+        console.log(aid + " {} " + skey + " {} " + regn);
+        this.uploadfile(file, name + file.name);
     }
 
     uploadfile = (file, fname) => {
@@ -96,7 +113,10 @@ class Editor extends React.Component {
             }
 
             alert('Successfully uploaded file.');
-            console.log(data)
+            console.log('Successfully uploaded file.');
+            // eslint-disable-next-line jsx-a11y/alt-text
+            console.log(data.key);
+            localStorage.setItem('imageName', data.key);
             return true;
         });
     }
