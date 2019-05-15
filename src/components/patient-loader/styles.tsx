@@ -29,7 +29,6 @@ export const styles = (theme: Theme) =>
             height: '100vh',
             overflow: 'auto',
             padding: theme.spacing.unit * 3,
-          
         },
         drawerPaper: {
             position: 'relative',
@@ -63,6 +62,7 @@ export const styles = (theme: Theme) =>
         },
         root: {
             display: 'flex',
+            marginBottom: theme.spacing.unit * 3,
         },
         tableContainer: {
             height: 320,
